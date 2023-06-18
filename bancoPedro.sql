@@ -2,7 +2,7 @@ create table academias (
 	codigo serial primary key, 
 	nome varchar(40) not null, 
 	descricao varchar(40) not null, 
-	sigla varchar(4) not null 	
+	sigla varchar(40) not null 	
 );
 
 insert into academias (nome, descricao, sigla) 

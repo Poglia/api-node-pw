@@ -1,8 +1,8 @@
-const { getPesosPorSalaDB, addPesoDB, updatePesoDB,
+const { getPesosPorSetorDB, addPesoDB, updatePesoDB,
   deletePesoDB, getPesoPorCodigoDB } = require('../useCases/pesoUseCases');
 
-const getPesoPorSala = async (request, response) => {
-  await getPesosPorSalaDB(request.params.codigosala)
+const getPesoPorSetor = async (request, response) => {
+  await getPesosPorSetorDB(request.params.codigosala)
     .then(data => response.status(200).json(data))
     .catch(err => {
       response.status(400).json({
@@ -53,6 +53,6 @@ const getPesoPorCodigo = async (request, response) => {
 }
 
 module.exports = {
-  getPesoPorSala, addPeso, updatePeso, 
+  getPesoPorSetor, addPeso, updatePeso, 
   deletePeso, getPesoPorCodigo
 }

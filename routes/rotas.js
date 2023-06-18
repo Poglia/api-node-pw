@@ -1,14 +1,14 @@
 const { Router } = require('express');
 
-const { getPredios, addPredio, updatePredio,
-     deletePredio, getPredioPorCodigo } = require('../controllers/prediosController')
+const { getAcademias, addAcademia, updateAcademia,
+     deleteAcademia, getAcademiaPorCodigo } = require('../controllers/academiasController')
 
-const { getSalas, addSala, updateSala, deleteSala, getSalaPorCodigo }
-     = require('../controllers/salasController');
+const { getSetores, addSetor, updateSetor, deleteSetor, getSetorPorCodigo }
+     = require('../controllers/setoresController');
 
-const { getEquipamentoPorSala, addEquipamento, updateEquipamento,
-     deleteEquipamento, getEquipamentoPorCodigo } =
-     require('../controllers/equipamentosController');
+const { getPesoPorSetor, addPeso, updatePeso,
+     deletePeso, getPesoPorCodigo } =
+     require('../controllers/pesosController');
 
 const { login , verificaJWT } = require('../controllers/segurancaController');
 
@@ -17,33 +17,33 @@ const rotas = new Router();
 rotas.route('/login')
      .post(login);
      
-rotas.route('/predios')
-     .get(verificaJWT, getPredios)
-     .post(verificaJWT, addPredio)
-     .put(verificaJWT, updatePredio);
+rotas.route('/academias')
+     .get(verificaJWT, getAcademias)
+     .post(verificaJWT, addAcademia)
+     .put(verificaJWT, updateAcademia);
 
-rotas.route('/predios/:codigo')
-     .get(verificaJWT, getPredioPorCodigo)
-     .delete(verificaJWT, deletePredio);
+rotas.route('/academias/:codigo')
+     .get(verificaJWT, getAcademiaPorCodigo)
+     .delete(verificaJWT, deleteAcademia);
 
-rotas.route('/salas')
-     .get(verificaJWT, getSalas)
-     .post(verificaJWT, addSala)
-     .put(verificaJWT, updateSala);
+rotas.route('/setores')
+     .get(verificaJWT, getSetores)
+     .post(verificaJWT, addSetor)
+     .put(verificaJWT, updateSetor);
 
-rotas.route('/salas/:codigo')
-     .get(verificaJWT, getSalaPorCodigo)
-     .delete(verificaJWT, deleteSala);
+rotas.route('/setores/:codigo')
+     .get(verificaJWT, getSetorPorCodigo)
+     .delete(verificaJWT, deleteSetor);
 
-rotas.route('/equipamentos/sala/:codigosala')
-     .get(verificaJWT, getEquipamentoPorSala)
+rotas.route('/pesos/setor/:codigosetor')
+     .get(verificaJWT, getPesoPorSetor)
 
-rotas.route('/equipamentos')
-     .post(verificaJWT, addEquipamento)
-     .put(verificaJWT, updateEquipamento);
+rotas.route('/pesos')
+     .post(verificaJWT, addPeso)
+     .put(verificaJWT, updatePeso);
 
-rotas.route('/equipamentos/:codigo')
-     .get(verificaJWT, getEquipamentoPorCodigo)
-     .delete(verificaJWT, deleteEquipamento);     
+rotas.route('/pesos/:codigo')
+     .get(verificaJWT, getPesoPorCodigo)
+     .delete(verificaJWT, deletePeso);     
 
 module.exports = rotas;

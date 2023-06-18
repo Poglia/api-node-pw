@@ -1,8 +1,8 @@
-const { getSalasDB, addSalaDB, updateSalaDB,
-  deleteSalaDB, getSalaPorCodigoDB } = require('../useCases/salaUseCases');
+const { getSetoresDB, addSetorDB, updateSetorDB,
+  deleteSetorDB, getSetorPorCodigoDB } = require('../useCases/setorUseCases');
 
-const getSalas = async (request, response) => {
-  await getSalasDB()
+const getSetores = async (request, response) => {
+  await getSetoresDB()
     .then(data => response.status(200).json(data))
     .catch(err => {
       response.status(400).json({
@@ -12,10 +12,10 @@ const getSalas = async (request, response) => {
     })
 }
 
-const addSala = async (request, response) => {
-  await addSalaDB(request.body)
+const addSetor = async (request, response) => {
+  await addSetorDB(request.body)
     .then(data => response.status(200).json({
-      status: "success", message: "Sala criada",
+      status: "success", message: "Setor criada",
       objeto: data
     }))
     .catch(err => response.status(400).json({
@@ -23,10 +23,10 @@ const addSala = async (request, response) => {
     }))
 }
 
-const updateSala = async (request, response) => {
-  await updateSalaDB(request.body)
+const updateSetor = async (request, response) => {
+  await updateSetorDB(request.body)
     .then(data => response.status(200).json({
-      status: "success", message: "Sala alterada",
+      status: "success", message: "Setor alterada",
       objeto: data
     }))
     .catch(err => response.status(400).json({
@@ -34,8 +34,8 @@ const updateSala = async (request, response) => {
     }))
 }
 
-const deleteSala = async (request, response) => {
-  await deleteSalaDB(request.params.codigo)
+const deleteSetor = async (request, response) => {
+  await deleteSetorDB(request.params.codigo)
     .then(data => response.status(200).json({
       status: "success", message: data
     }))
@@ -44,8 +44,8 @@ const deleteSala = async (request, response) => {
     }))
 }
 
-const getSalaPorCodigo = async (request, response) => {
-  await getSalaPorCodigoDB(request.params.codigo)
+const getSetorPorCodigo = async (request, response) => {
+  await getSetorPorCodigoDB(request.params.codigo)
     .then(data => response.status(200).json(data))
     .catch(err => response.status(400).json({
       status: "error", message: err
@@ -53,6 +53,6 @@ const getSalaPorCodigo = async (request, response) => {
 }
 
 module.exports = {
-  getSalas, addSala, updateSala,
-  deleteSala, getSalaPorCodigo
+  getSetores, addSetor, updateSetor,
+  deleteSetor, getSetorPorCodigo
 }

@@ -1,4 +1,4 @@
-class Predio {
+class Academia {
     constructor(codigo, nome, descricao, sigla){
         this.codigo = codigo;
         this.nome = nome;
@@ -7,4 +7,4 @@ class Predio {
     }
 }
 
-module.exports = Predio;
+module.exports = Academia;

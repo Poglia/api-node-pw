@@ -1,8 +1,8 @@
-const { getPrediosDB, addPredioDB, updatePredioDB,
-deletePredioDB, getPredioPorCodigoDB } = require('../useCases/predioUseCases');
+const { getAcademiasDB, addAcademiaDB, updateAcademiaDB,
+deleteAcademiaDB, getAcademiaPorCodigoDB } = require('../useCases/academiaUseCases');
 
-const getPredios = async (request, response) => {
-    await getPrediosDB()
+const getAcademias = async (request, response) => {
+    await getAcademiasDB()
           .then(data => response.status(200).json(data))
           .catch(err => {
             response.status(400).json({
@@ -12,8 +12,8 @@ const getPredios = async (request, response) => {
           })
 }
 
-const addPredio = async (request, response) => {
-    await addPredioDB(request.body)
+const addAcademia = async (request, response) => {
+    await addAcademiaDB(request.body)
           .then(data => response.status(200).json({
             status : "success", message : "Prédio criado",
             objeto : data
@@ -23,8 +23,8 @@ const addPredio = async (request, response) => {
           }))
 }
 
-const updatePredio = async (request, response) => {
-    await updatePredioDB(request.body)
+const updateAcademia = async (request, response) => {
+    await updateAcademiaDB(request.body)
           .then(data => response.status(200).json({
             status : "success", message : "Prédio alterado",
             objeto : data
@@ -34,8 +34,8 @@ const updatePredio = async (request, response) => {
           }))
 }
 
-const deletePredio = async (request, response) => {
-    await deletePredioDB(request.params.codigo)
+const deleteAcademia = async (request, response) => {
+    await deleteAcademiaDB(request.params.codigo)
           .then(data => response.status(200).json({
             status : "success", message : data
           }))
@@ -44,13 +44,13 @@ const deletePredio = async (request, response) => {
           }))
 }
 
-const getPredioPorCodigo = async (request, response) => {
-    await getPredioPorCodigoDB(request.params.codigo)
+const getAcademiaPorCodigo = async (request, response) => {
+    await getAcademiaPorCodigoDB(request.params.codigo)
           .then(data => response.status(200).json(data))
           .catch(err => response.status(400).json({
             status : "error", message: err
           }))
 }
 
-module.exports = { getPredios, addPredio, 
-    updatePredio, deletePredio, getPredioPorCodigo }
+module.exports = { getAcademias, addAcademia, 
+    updateAcademia, deleteAcademia, getAcademiaPorCodigo }

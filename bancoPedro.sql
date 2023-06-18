@@ -1,3 +1,7 @@
+academias = predios
+setores = salas
+pesos = equipamentos
+
 create table academias (
 	codigo serial primary key, 
 	nome varchar(40) not null, 

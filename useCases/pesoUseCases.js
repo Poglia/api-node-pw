@@ -1,5 +1,5 @@
 const { pool } = require('../config')
-const Peso = require('../entities/pesos')
+const Peso = require('../entities/peso')
 
 const getPesosPorSetorDB = async (codigosetor) => {
     try {

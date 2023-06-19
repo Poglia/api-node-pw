@@ -2,12 +2,12 @@ const { getPesosPorSetorDB, addPesoDB, updatePesoDB,
   deletePesoDB, getPesoPorCodigoDB } = require('../useCases/pesoUseCases');
 
 const getPesoPorSetor = async (request, response) => {
-  await getPesosPorSetorDB(request.params.codigosala)
+  await getPesosPorSetorDB(request.params.codigosetor)
     .then(data => response.status(200).json(data))
     .catch(err => {
       response.status(400).json({
         status: 'error',
-        message: 'Erro ao consultar os pesos da sala: ' + err
+        message: 'Erro ao consultar os pesos do setor: ' + err
       })
     })
 }
